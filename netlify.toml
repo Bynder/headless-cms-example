@@ -1,0 +1,4 @@
+[template.environment]
+  GATHERCONTENT_API_USERNAME = "Email that you used to sign up to GatherContent"
+  GATHERCONTENT_API_KEY = "GatherContent API Key"
+  GATHERCONTENT_PROJECT_ID = "GatherContent Project ID"
