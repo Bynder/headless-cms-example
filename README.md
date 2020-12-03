@@ -2,7 +2,19 @@
 
 This repository is set-up to work with a GatherContent example project, publishing content to Vercel or Netlify, which then uses Next.js to present on the front end. You can adapt this to pull content from any of your projects, and see how quick you can build out websites and other experiences on top of GatherContent.
 
-### Deploying
+---
+
+## Prerequisites
+
+- A [GatherContent](https://gathercontent.com/) account
+
+- An API Key (follow [instructions](https://docs.gathercontent.com/reference#authentication) to find your API key)
+
+- The project id for the example project named "Microsite (live example)". The easiest way to get the ID is to copy it from the URL. Go to your project, the structure will look like this: `gathercontent.com/content/<PROJECT-ID>/items`
+
+---
+
+## Deploying
 
 To deploy with **Vercel**, click:
 
@@ -21,11 +33,11 @@ GATHERCONTENT_API_USERNAME=<email>
 GATHERCONTENT_API_KEY=<api-key>
 GATHERCONTENT_PROJECT_ID=<project-id>
 ```
-- `GATHERCONTENT_API_USERNAME` is your email address which you used to sign up to GatherContent
+- `GATHERCONTENT_API_USERNAME` (is your email address which you used to sign up to GatherContent)
 
-- `GATHERCONTENT_API_KEY` - follow [instructions](https://docs.gathercontent.com/reference#authentication) to find your API key
+- `GATHERCONTENT_API_KEY`
 
-- `GATHERCONTENT_PROJECT_ID` - the easiest way to get the ID is to copy it from the URL. Go to your project, the structure will look like this: `gathercontent.com/content/<PROJECT-ID>/items`
+- `GATHERCONTENT_PROJECT_ID`
 
 As every project is unique, you'll need some environment variables for getting your content;
 
@@ -36,7 +48,7 @@ CONTENT_WEEKS_FIELD_UUID=<uuid-of-weeks-field>
 CONTENT_CREDITS_FIELD_UUID=<uuid-of-credits-field>
 ```
 
-Discovering these can be tricky so we built a tool to help you generate the `.env` file automatically. You can run the following command (you'll need your email, api key and project id); 
+Discovering these can be tricky, so we built a tool to help you generate the `.env` file automatically. You can run the following command (you'll need your email, api key and project id); 
 
 ```
 yarn && yarn env --email=<email> --apiKey=<api-key> --projectId=<projectId>
@@ -48,10 +60,10 @@ After this is complete you should see the required details to run your project l
 
 ### Local development
 
-To run the project locally, you need to fork this repo or clone it.
+To run the project locally, you need to fork this repo or clone it. As well as having `node` & `yarn` installed.
 
 ```
-git clone
+git clone git@github.com:gathercontent/nextjs-site-example.git
 ```
 
 Next, install all dependencies:
@@ -60,20 +72,22 @@ Next, install all dependencies:
 yarn
 ```
 
-Manually create an `.env` file and enter all the required environment variables. Use `.env.example` as a starter if you wish.
+Manually create an `.env` file and enter all the required environment variables Use `.env.example` as a starter if you wish.
 
 ```
 touch .env
 ```
 
-or, you can generate the env file using;
+or, you can generate the env file using (if you've already done this, then don't worry);
 
 ```
-yarn env --email=<email> --apiKey=<api-key> --projectId=<projectId>`
+yarn env --email=<email> --apiKey=<api-key> --projectId=<projectId>
 ```
 
-Finally, you can start development server:
+Finally, you can start development server;
 
 ```
 yarn dev
 ```
+
+Be sure to navigate to `http://localhost:3000` to see your example project locally.
