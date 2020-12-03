@@ -2,8 +2,6 @@
 
 This repository is set-up to work with a GatherContent example project, publishing content to Vercel or Netlify, which then uses Next.js to present on the front end. You can adapt this to pull content from any of your projects, and see how quick you can build out websites and other experiences on top of GatherContent.
 
----
-
 ## Prerequisites
 
 - A [GatherContent](https://gathercontent.com/) account
@@ -11,8 +9,6 @@ This repository is set-up to work with a GatherContent example project, publishi
 - An API Key (follow these [instructions](https://docs.gathercontent.com/reference#authentication) to find your API key)
 
 - The project id for the example project named "Course records (live site example)". Every account should have this project, and you can find the id in the project settings.
-
----
 
 ## Deploying
 
@@ -24,9 +20,7 @@ To deploy with **Netlify**, click:
 
 [![Deploy with Vercel](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gathercontent/nextjs-site-example)
 
----
-
-### Required environment variables
+## Required environment variables
 
 ```
 GATHERCONTENT_API_USERNAME=<email>
@@ -56,9 +50,7 @@ yarn && yarn env --email=<email> --apiKey=<api-key> --projectId=<projectId>
 
 After this is complete you should see the required details to run your project locally. You can also use these details when deploying your site to Vercel or Netlify.
 
----
-
-### Local development
+## Local development
 
 To run the project locally, you need to fork this repo or clone it. As well as having `node` & `yarn` installed.
 
