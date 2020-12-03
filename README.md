@@ -12,6 +12,8 @@ To deploy with **Netlify**, click:
 
 [![Deploy with Vercel](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gathercontent/nextjs-site-example)
 
+---
+
 ### Required environment variables
 
 ```
@@ -34,11 +36,15 @@ CONTENT_WEEKS_FIELD_UUID=<uuid-of-weeks-field>
 CONTENT_CREDITS_FIELD_UUID=<uuid-of-credits-field>
 ```
 
-## More on content UUIDs
+To generate the `.env` file automatically you can run the following command (you'll need your email, api key and project id); 
 
-- In this example we have used env vars for storing content uuids, but you can add them directly into the code. For storing UUIDs in code we recommend using the `./contentUUIDs.js` file and importing that into the pages required.
+```
+yarn && yarn env --email=<email> --apiKey=<api-key> --projectId=<projectId>`
+```
 
-- You can get the UUIDs in a number of different ways, but we recommend you discover them using the API.
+After this is complete you should see the required details to run your project locally. You can also use these details when deploying your site to Vercel or Netlify.
+
+---
 
 ### Local development
 
@@ -54,10 +60,16 @@ Next, install all dependencies:
 yarn
 ```
 
-Create an `.env` file and fill it up with all the required environment variables. Use `.env.example` as a starter if you wish.
+Manually create an `.env` file and enter all the required environment variables. Use `.env.example` as a starter if you wish.
 
 ```
 touch .env
+```
+
+or, you can generate the env file using;
+
+```
+yarn env --email=<email> --apiKey=<api-key> --projectId=<projectId>`
 ```
 
 Finally, you can start development server:

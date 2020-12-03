@@ -11,8 +11,8 @@ import { getParentFolderId, getStructuredFolders } from "../../lib/folders";
 const Page = ({ data, structure, folders, parentFolder }) => {
   const { content } = data;
   const heroImageUrl =
-    (content["8db36dbc-07d1-4564-9323-910bd91ce50c"] &&
-      content["8db36dbc-07d1-4564-9323-910bd91ce50c"][0]?.url) ||
+    (content[process.env.CONTENT_HERO_IMAGE_FIELD_UUID] &&
+      content[process.env.CONTENT_HERO_IMAGE_FIELD_UUID][0]?.url) ||
     null;
 
   return (

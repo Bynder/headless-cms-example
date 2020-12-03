@@ -124,11 +124,11 @@ export async function getStaticProps() {
         id: courseData.id,
         folder_uuid: courseData.folder_uuid,
         hours:
-          courseData?.content["1e60ff41-ceb2-40c0-a60f-63559756d471"] || null,
+          courseData?.content[process.env.CONTENT_HOURS_FIELD_UUID] || null,
         weeks:
-          courseData?.content["b732347b-a440-410d-aa29-6fca14d21958"] || null,
+          courseData?.content[process.env.CONTENT_WEEKS_FIELD_UUID] || null,
         credits:
-          courseData?.content["779f2d45-1008-4f98-991d-81fe1ace5136"] || null,
+          courseData?.content[process.env.CONTENT_CREDITS_FIELD_UUID] || null,
       },
     ];
   }
