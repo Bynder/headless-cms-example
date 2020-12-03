@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }) {
         openGraph={{
           type: "website",
           locale: "en_US",
-          url: "https://university.bejamas.io/",
+          url: "https://course-records-example.vercel.app/",
           site_name: "Royal University of GatherContent",
         }}
         twitter={{
