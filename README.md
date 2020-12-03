@@ -14,7 +14,7 @@ This repository is set-up to work with a GatherContent example project, publishi
 
 To deploy with **Vercel**, click:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/gathercontent/nextjs-site-example&env=GATHERCONTENT_API_USERNAME%2CGATHERCONTENT_API_KEY%2CGATHERCONTENT_PROJECT_ID&demo-title=Royal+University+of+GatherContent&demo-description=GatherContent+example+project%2C+publishing+content+to+Vercel+or+Netlify%2C+which+then+uses+Next.js+to+present+on+the+front+end.&demo-url=https%3A%2F%2Funiversity-wheat.vercel.app%2F&demo-image=blob%3Ahttps%3A%2F%2Fvercel.com%2F5e754c6f-5390-4f5c-8003-26945d2d8713&teamSlug=gathercontent)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/gathercontent/nextjs-site-example&env=GATHERCONTENT_API_USERNAME%2CGATHERCONTENT_API_KEY%2CGATHERCONTENT_PROJECT_ID&demo-title=Royal+University+of+GatherContent&demo-description=GatherContent+example+project%2C+publishing+content+to+Vercel+or+Netlify%2C+which+then+uses+Next.js+to+present+on+the+front+end.&demo-url=https%3A%2F%2Funiversity-wheat.vercel.app%2F&demo-image=blob:https://vercel.com/4412abf6-472c-46e6-9d6e-14111e9a858e)
 
 To deploy with **Netlify**, click:
 
