@@ -33,7 +33,6 @@
     "env": "node createEnvFile.js"
   },
   "devDependencies": {
-    "@babel/register": "^7.12.1",
     "node-fetch": "^2.6.1",
     "postcss-flexbugs-fixes": "^4.2.1",
     "postcss-preset-env": "^6.7.0",
