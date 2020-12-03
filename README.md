@@ -27,7 +27,7 @@ GATHERCONTENT_PROJECT_ID=<project-id>
 
 - `GATHERCONTENT_PROJECT_ID` - the easiest way to get the ID is to copy it from the URL. Go to your project, the structure will look like this: `gathercontent.com/content/<PROJECT-ID>/items`
 
-As every project is unique, you'll need some environment variables for content uuids;
+As every project is unique, you'll need some environment variables for getting your content;
 
 ```
 CONTENT_HERO_IMAGE_FIELD_UUID=<uuid-of-hero-image-field>
@@ -36,7 +36,7 @@ CONTENT_WEEKS_FIELD_UUID=<uuid-of-weeks-field>
 CONTENT_CREDITS_FIELD_UUID=<uuid-of-credits-field>
 ```
 
-To generate the `.env` file automatically you can run the following command (you'll need your email, api key and project id); 
+Discovering these can be tricky so we built a tool to help you generate the `.env` file automatically. You can run the following command (you'll need your email, api key and project id); 
 
 ```
 yarn && yarn env --email=<email> --apiKey=<api-key> --projectId=<projectId>`
