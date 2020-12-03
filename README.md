@@ -8,9 +8,9 @@ This repository is set-up to work with a GatherContent example project, publishi
 
 - A [GatherContent](https://gathercontent.com/) account
 
-- An API Key (follow [instructions](https://docs.gathercontent.com/reference#authentication) to find your API key)
+- An API Key (follow these [instructions](https://docs.gathercontent.com/reference#authentication) to find your API key)
 
-- The project id for the example project named "Microsite (live example)". The easiest way to get the ID is to copy it from the URL. Go to your project, the structure will look like this: `gathercontent.com/content/<PROJECT-ID>/items`
+- The project id for the example project named "Course records (live site example)". Every account should have this project, and you can find the id in the project settings.
 
 ---
 
