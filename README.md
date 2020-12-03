@@ -39,7 +39,7 @@ CONTENT_CREDITS_FIELD_UUID=<uuid-of-credits-field>
 Discovering these can be tricky so we built a tool to help you generate the `.env` file automatically. You can run the following command (you'll need your email, api key and project id); 
 
 ```
-yarn && yarn env --email=<email> --apiKey=<api-key> --projectId=<projectId>`
+yarn && yarn env --email=<email> --apiKey=<api-key> --projectId=<projectId>
 ```
 
 After this is complete you should see the required details to run your project locally. You can also use these details when deploying your site to Vercel or Netlify.
