@@ -10,8 +10,6 @@ This repository is set-up to work with a GatherContent example project, publishi
 
 - The project id for the example project named "Course records (live site example)". Every account should have this project, and you can find the id in the project settings.
 
----
-
 ## Deploying
 
 To deploy with **Vercel**, click:
