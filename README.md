@@ -1,4 +1,4 @@
-# GatherContent + Next.js Site Example
+# GatherContent Headless CMS Example
 
 This repository is set-up to work with a GatherContent example project, publishing content to Vercel or Netlify, which then uses Next.js to present on the front end. You can adapt this to pull content from any of your projects, and see how quick you can build out websites and other experiences on top of GatherContent.
 
