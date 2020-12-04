@@ -51,9 +51,10 @@ export default Page;
 
 export async function getStaticProps({ params }) {
   const projectId = process.env.GATHERCONTENT_PROJECT_ID;
-  const item = await get(`/items/${params.id}`);
-  const rawFolders = await get(`/projects/${projectId}/folders`);
-  const folders = getStructuredFolders(rawFolders);
+  const [item, folders] = await Promise.all([
+    get(`/items/${params.id}`),
+    get(`/projects/${projectId}/folders`).then(getStructuredFolders),
+  ]);
 
   const content = mapCourseContentToEnv(item.content);
 
