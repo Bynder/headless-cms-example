@@ -33,35 +33,55 @@ const fieldLabelLookup = [
   'Total seats',
 ];
 
+if (!argv.apiKey || !argv.email || !argv.projectId) {
+  console.log('ERROR: Missing Data');
+  console.log('You should supply an email, api key and project id.');
+  return;
+}
+
 (async () => {
-  const templatesResponse = await get(
-    `https://api.gathercontent.com/projects/${argv.projectId}/templates`
-  );
-  const { data } = await templatesResponse.json();
-  const template = data.filter((t) => t.name === 'Course record')[0];
-
-  const templateResponse = await get(
-    `https://api.gathercontent.com/templates/${template.id}`
-  );
-  const { related } = await templateResponse.json();
-
-  const fieldsData = related.structure.groups.reduce((acc, group) => {
-    const fields = group.fields.filter(
-      (f) => fieldLabelLookup.indexOf(f.label) > -1
+  try {
+    const templatesResponse = await get(
+      `https://api.gathercontent.com/projects/${argv.projectId}/templates`
     );
+    const { data } = await templatesResponse.json();
 
-    return !fields.length
-      ? acc
-      : [
-          ...acc,
-          ...fields.map((fss) => ({
-            label: `<${fss.label}>`,
-            uuid: fss.uuid,
-          })),
-        ];
-  }, []);
+    if (!data) {
+      throw new Error('ERROR: Project templates not found.');
+    }
 
-  let envString = `GATHERCONTENT_API_USERNAME=${argv.email}
+    const template = data.filter((t) => t.name === 'Course record')[0];
+
+    if (!template) {
+      throw new Error('ERROR: Template not found.');
+    }
+
+    const templateResponse = await get(
+      `https://api.gathercontent.com/templates/${template.id}`
+    );
+    const { related } = await templateResponse.json();
+
+    if (!related) {
+      throw new Error('ERROR: Structure not found.');
+    }
+
+    const fieldsData = related.structure.groups.reduce((acc, group) => {
+      const fields = group.fields.filter(
+        (f) => fieldLabelLookup.indexOf(f.label) > -1
+      );
+
+      return !fields.length
+        ? acc
+        : [
+            ...acc,
+            ...fields.map((fss) => ({
+              label: `<${fss.label}>`,
+              uuid: fss.uuid,
+            })),
+          ];
+    }, []);
+
+    let envString = `GATHERCONTENT_API_USERNAME=${argv.email}
 GATHERCONTENT_API_KEY=${argv.apiKey}
 GATHERCONTENT_PROJECT_ID=${argv.projectId}
 
@@ -78,9 +98,24 @@ CONTENT_TAUGHT_BY_FIELD_UUID=<Taught by>
 CONTENT_TOTAL_SEATS_FIELD_UUID=<Total seats>
       `;
 
-  fieldsData.map((f) => {
-    envString = envString.replace(f.label, f.uuid);
-  });
+    fieldsData.map((f) => {
+      envString = envString.replace(f.label, f.uuid);
+    });
 
-  fs.writeFile('.env', envString, () => console.log(envString));
+    const missingFields = fieldLabelLookup.filter(
+      (label) => !fieldsData.some((fd) => fd.label === `<${label}>`)
+    );
+
+    fs.writeFile('.env', envString, () => {
+      missingFields.map((mf) => {
+        console.log(
+          `WARNING: ${mf} is missing. Update the field label in your template to match ${mf}`
+        );
+      });
+
+      console.log('.env file updated.');
+    });
+  } catch (e) {
+    console.log(e);
+  }
 })();
