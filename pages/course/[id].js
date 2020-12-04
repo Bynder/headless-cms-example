@@ -7,18 +7,13 @@ import QuickNavigation from "../../components/QuickNavigation";
 
 import { get } from "../../lib/api";
 import { getParentFolderId, getStructuredFolders } from "../../lib/folders";
+import { mapCourseContentToEnv } from '../../lib/mapCourseContentToEnv';
 
-const Page = ({ data, structure, folders, parentFolder }) => {
-  const { content } = data;
-  const heroImageUrl =
-    (content[process.env.CONTENT_HERO_IMAGE_FIELD_UUID] &&
-      content[process.env.CONTENT_HERO_IMAGE_FIELD_UUID][0]?.url) ||
-    null;
-
+const Page = ({ data, content, folders, parentFolder }) => {
   return (
-    <Layout headerShadow={!Boolean(heroImageUrl)}>
+    <Layout headerShadow={!Boolean(content.heroImageUrl)}>
       <NextSeo title={data.name} />
-      {heroImageUrl && <HeroImage url={heroImageUrl} />}
+      {content.heroImageUrl && <HeroImage url={content.heroImageUrl} />}
       <Breadcrumbs
         items={[
           {
@@ -67,8 +62,10 @@ export async function getStaticProps({ params }) {
     folderId: data.folder_uuid,
   });
 
+  const content = mapCourseContentToEnv(data.content);
+
   return {
-    props: { data, structure, folders, parentFolder },
+    props: { data, content, structure, folders, parentFolder },
   };
 }
 

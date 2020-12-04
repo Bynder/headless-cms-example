@@ -28,7 +28,8 @@ const fieldLabelLookup = [
   'Course summary',
   'Taught by',
   'Prerequisites',
-  'Note'
+  'Note',
+  'Total seats',
 ];
 
 (async () => {
@@ -62,6 +63,7 @@ CONTENT_CORE_REQUISITES_FIELD_UUID=<Core requisites>
 CONTENT_COURSE_SUMMARY_FIELD_UUID=<Course summary>
 CONTENT_NOTE_FIELD_UUID=<Note>
 CONTENT_TAUGHT_BY_FIELD_UUID=<Taught by>
+CONTENT_TOTAL_SEATS_FIELD_UUID=<Total seats>
       `
 
   fieldsData.map(f => {

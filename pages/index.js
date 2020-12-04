@@ -7,6 +7,7 @@ import QuickNavigation from "../components/QuickNavigation";
 
 import { get } from "../lib/api";
 import { getStructuredFolders } from "../lib/folders";
+import { mapCourseContentToEnv } from '../lib/mapCourseContentToEnv';
 
 const Home = ({ courses, folders }) => {
   return (
@@ -123,12 +124,7 @@ export async function getStaticProps() {
         name: courseData.name,
         id: courseData.id,
         folder_uuid: courseData.folder_uuid,
-        hours:
-          courseData?.content[process.env.CONTENT_HOURS_FIELD_UUID] || null,
-        weeks:
-          courseData?.content[process.env.CONTENT_WEEKS_FIELD_UUID] || null,
-        credits:
-          courseData?.content[process.env.CONTENT_CREDITS_FIELD_UUID] || null,
+        ...mapCourseContentToEnv(courseData.content),
       },
     ];
   }
