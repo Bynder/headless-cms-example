@@ -9,6 +9,8 @@ import { get } from '../lib/api';
 import { getStructuredFolders } from '../lib/folders';
 import { mapCourseContentToEnv } from '../lib/mapCourseContentToEnv';
 
+export const config = { amp: true };
+
 const Home = ({ courses, folders }) => {
   return (
     <Layout>
