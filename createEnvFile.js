@@ -18,7 +18,18 @@ const get = async (endpoint) => await fetch(endpoint, {
  * We currently have no way of identifying fields (e.g. slugs)
  * so for now we're searching for fields with a specific label.
  */
-const fieldLabelLookup = ['Hours', 'Weeks', 'Credits', 'Photo of course'];
+const fieldLabelLookup = [
+  'Hours',
+  'Weeks',
+  'Credits',
+  'Photo of course',
+  'Course code',
+  'Core requisites',
+  'Course summary',
+  'Taught by',
+  'Prerequisites',
+  'Note'
+];
 
 (async () => {
   const templatesResponse = await get(`https://api.gathercontent.com/projects/${argv.projectId}/templates`);
@@ -45,6 +56,12 @@ CONTENT_HERO_IMAGE_FIELD_UUID=<Photo of course>
 CONTENT_HOURS_FIELD_UUID=<Hours>
 CONTENT_WEEKS_FIELD_UUID=<Weeks>
 CONTENT_CREDITS_FIELD_UUID=<Credits>
+CONTENT_COURSE_CODE_FIELD_UUID=<Course code>
+CONTENT_PREREQUISITES_FIELD_UUID=<Prerequisites>
+CONTENT_CORE_REQUISITES_FIELD_UUID=<Core requisites>
+CONTENT_COURSE_SUMMARY_FIELD_UUID=<Course summary>
+CONTENT_NOTE_FIELD_UUID=<Note>
+CONTENT_TAUGHT_BY_FIELD_UUID=<Taught by>
       `
 
   fieldsData.map(f => {
