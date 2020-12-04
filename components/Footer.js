@@ -1,5 +1,5 @@
-import Link from "next/link";
-import Logo from "./Logo";
+import Link from 'next/link';
+import Logo from './Logo';
 
 const Footer = () => (
   <footer className="bg-neutral-1 border-t">
@@ -55,11 +55,11 @@ const Footer = () => (
         <div className="max-w-sm mt-8 lg:mt-0">
           <p>
             This Jamstack demo uses Netlify and Next.js, and was made in
-            partnership with{" "}
+            partnership with{' '}
             <a href="https://gathercontent.com/" className="text-accent-1">
               GatherContent
-            </a>{" "}
-            and{" "}
+            </a>{' '}
+            and{' '}
             <a
               href="https://bejamas.io"
               title="Jamstack developers"

@@ -1,7 +1,7 @@
-import NextHead from "next/head";
-import { DefaultSeo } from "next-seo";
+import NextHead from 'next/head';
+import { DefaultSeo } from 'next-seo';
 
-import "../styles/index.css";
+import '../styles/index.css';
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -12,13 +12,13 @@ function MyApp({ Component, pageProps }) {
         description="Join some of the best students from around the globe at one of the
         world's top universities. We’ve got the perfect course just for you."
         openGraph={{
-          type: "website",
-          locale: "en_US",
-          url: "https://course-records-example.vercel.app/",
-          site_name: "Royal University of GatherContent",
+          type: 'website',
+          locale: 'en_US',
+          url: 'https://course-records-example.vercel.app/',
+          site_name: 'Royal University of GatherContent',
         }}
         twitter={{
-          cardType: "summary_large_image",
+          cardType: 'summary_large_image',
         }}
       />
       <NextHead>

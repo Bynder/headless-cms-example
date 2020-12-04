@@ -1,6 +1,6 @@
-import Link from "next/link";
-import classNames from "classnames";
-import { useRouter } from "next/router";
+import Link from 'next/link';
+import classNames from 'classnames';
+import { useRouter } from 'next/router';
 
 const Breadcrumbs = ({ items }) => {
   const router = useRouter();
@@ -15,8 +15,8 @@ const Breadcrumbs = ({ items }) => {
           {items.map((item, i) => (
             <li
               key={`breadcrumb__${item.href}__${i}`}
-              className={classNames("flex", "items-center", {
-                "text-gray-800": router.asPath === item.href,
+              className={classNames('flex', 'items-center', {
+                'text-gray-800': router.asPath === item.href,
               })}
             >
               {router.asPath === item.href ? (

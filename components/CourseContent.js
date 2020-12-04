@@ -28,33 +28,23 @@ const CourseData = ({ content }) => (
   <div className="my-8 border rounded-md shadow-xl text-center grid grid-cols-5 justify-around">
     <div className="p-4 border-r py-8">
       <p className="uppercase text-base-1 text-xs">Credits</p>
-      <p className="text-2xl">
-        {content.credits}
-      </p>
+      <p className="text-2xl">{content.credits}</p>
     </div>
     <div className="p-4 border-r py-8">
       <p className="uppercase text-base-1 text-xs">Hours /week</p>
-      <p className="text-2xl">
-        {content.hours?.replace(" hours", "")}
-      </p>
+      <p className="text-2xl">{content.hours?.replace(' hours', '')}</p>
     </div>
     <div className="p-4 border-r py-8">
       <p className="uppercase text-base-1 text-xs">Weeks</p>
-      <p className="text-2xl">
-        {content.weeks?.replace(" weeks", "")}
-      </p>
+      <p className="text-2xl">{content.weeks?.replace(' weeks', '')}</p>
     </div>
     <div className="p-4 border-r py-8">
       <p className="uppercase text-base-1 text-xs">Seats</p>
-      <p className="text-2xl">
-        {content.seats?.replace(" seats", "")}
-      </p>
+      <p className="text-2xl">{content.seats?.replace(' seats', '')}</p>
     </div>
     <div className="p-4  py-8">
       <p className="uppercase text-base-1 text-xs">Course code</p>
-      <p className="text-2xl">
-        {content.courseCode}
-      </p>
+      <p className="text-2xl">{content.courseCode}</p>
     </div>
   </div>
 );

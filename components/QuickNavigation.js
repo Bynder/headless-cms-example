@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 const QuickNavigation = ({ folders, currentFolder }) => (
   <div className="bg-neutral-1 p-3 rounded-md sticky top-4 border border-gray-200">

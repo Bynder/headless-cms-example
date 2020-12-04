@@ -1,12 +1,12 @@
-import { NextSeo } from "next-seo";
-import Link from "next/link";
-import Breadcrumbs from "../components/Breadcrumbs";
-import HeroImage from "../components/HeroImage";
-import Layout from "../components/Layout";
-import QuickNavigation from "../components/QuickNavigation";
+import { NextSeo } from 'next-seo';
+import Link from 'next/link';
+import Breadcrumbs from '../components/Breadcrumbs';
+import HeroImage from '../components/HeroImage';
+import Layout from '../components/Layout';
+import QuickNavigation from '../components/QuickNavigation';
 
-import { get } from "../lib/api";
-import { getStructuredFolders } from "../lib/folders";
+import { get } from '../lib/api';
+import { getStructuredFolders } from '../lib/folders';
 import { mapCourseContentToEnv } from '../lib/mapCourseContentToEnv';
 
 const Home = ({ courses, folders }) => {
@@ -17,16 +17,16 @@ const Home = ({ courses, folders }) => {
       <Breadcrumbs
         items={[
           {
-            name: "Study",
-            href: "#",
+            name: 'Study',
+            href: '#',
           },
           {
-            name: "Undergraduate study",
-            href: "#",
+            name: 'Undergraduate study',
+            href: '#',
           },
           {
-            name: "Course directory",
-            href: "/",
+            name: 'Course directory',
+            href: '/',
           },
         ]}
       />
@@ -79,7 +79,7 @@ const Home = ({ courses, folders }) => {
                                   {course.credits}
                                 </div>
                                 <div className="col-span-2 text-base-1">
-                                  {course.hours.replace(" hours", "")}
+                                  {course.hours.replace(' hours', '')}
                                 </div>
                                 <div className="col-span-2 text-base-1 truncate">
                                   {course.weeks}

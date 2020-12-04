@@ -1,15 +1,15 @@
-import Link from "next/link";
-import classNames from "classnames";
-import { Transition } from "@tailwindui/react";
+import Link from 'next/link';
+import classNames from 'classnames';
+import { Transition } from '@tailwindui/react';
 
-import Logo from "./Logo";
-import { useState } from "react";
+import Logo from './Logo';
+import { useState } from 'react';
 
 const Header = ({ shadow = false }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className={classNames({ "shadow-lg": shadow })}>
+    <header className={classNames({ 'shadow-lg': shadow })}>
       <div className="relative bg-white">
         <div className="container mx-auto relative pt-6 py-6 px-4 xl:px-8">
           <nav

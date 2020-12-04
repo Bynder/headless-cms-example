@@ -27,6 +27,7 @@ GATHERCONTENT_API_USERNAME=<email>
 GATHERCONTENT_API_KEY=<api-key>
 GATHERCONTENT_PROJECT_ID=<project-id>
 ```
+
 - `GATHERCONTENT_API_USERNAME` (is your email address which you used to sign up to GatherContent)
 
 - `GATHERCONTENT_API_KEY`
@@ -42,7 +43,7 @@ CONTENT_WEEKS_FIELD_UUID=<uuid-of-weeks-field>
 CONTENT_CREDITS_FIELD_UUID=<uuid-of-credits-field>
 ```
 
-Discovering these can be tricky, so we built a tool to help you generate the `.env` file automatically. You can run the following command (you'll need your email, api key and project id); 
+Discovering these can be tricky, so we built a tool to help you generate the `.env` file automatically. You can run the following command (you'll need your email, api key and project id);
 
 ```
 yarn && yarn env --email=<email> --apiKey=<api-key> --projectId=<projectId>

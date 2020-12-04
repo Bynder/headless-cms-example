@@ -1,5 +1,5 @@
-import Header from "./Header";
-import Footer from "./Footer";
+import Header from './Header';
+import Footer from './Footer';
 
 const Layout = ({ children, headerShadow }) => (
   <>
@@ -9,7 +9,7 @@ const Layout = ({ children, headerShadow }) => (
 
     <style global jsx>{`
       body {
-        font-family: "IBM Plex Sans", sans-serif;
+        font-family: 'IBM Plex Sans', sans-serif;
         color: #29333d;
       }
     `}</style>
