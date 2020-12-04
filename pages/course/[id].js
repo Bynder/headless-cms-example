@@ -4,7 +4,6 @@ import CourseContent from '../../components/CourseContent';
 import HeroImage from '../../components/HeroImage';
 import Layout from '../../components/Layout';
 import QuickNavigation from '../../components/QuickNavigation';
-
 import { get } from '../../lib/api';
 import { getParentFolderId, getStructuredFolders } from '../../lib/folders';
 import { mapCourseContentToEnv } from '../../lib/mapCourseContentToEnv';
@@ -55,8 +54,7 @@ export async function getStaticProps({ params }) {
   const data = await get(`/items/${params.id}`);
   const structure = await get(`/structures/${data.structure_uuid}`);
   const rawFolders = await get(`/projects/${projectId}/folders`);
-
-  const folders = getStructuredFolders({ folders: rawFolders });
+  const folders = getStructuredFolders(rawFolders);
   const parentFolder = getParentFolderId({
     folders: rawFolders,
     folderId: data.folder_uuid,

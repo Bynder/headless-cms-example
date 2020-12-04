@@ -111,7 +111,7 @@ export async function getStaticProps() {
   const projectId = process.env.GATHERCONTENT_PROJECT_ID;
   const items = await get(`/projects/${projectId}/items`);
   const rawFolders = await get(`/projects/${projectId}/folders`);
-  const folders = getStructuredFolders({ folders: rawFolders });
+  const folders = getStructuredFolders(rawFolders);
 
   let courses = [];
 
