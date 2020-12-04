@@ -1,3 +1,5 @@
+build
+coverage
 .idea
 .env
 node_modules

@@ -1,8 +1,6 @@
 # Ignore artifacts:
 build
 coverage
-.next
-
 .idea
 .env
 node_modules
