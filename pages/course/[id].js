@@ -17,11 +17,11 @@ const Page = ({ data, content, folders, parentFolder }) => {
         items={[
           {
             name: 'Study',
-            href: '#',
+            href: '/',
           },
           {
             name: 'Undergraduate study',
-            href: '#',
+            href: '/',
           },
           {
             name: 'Course directory',

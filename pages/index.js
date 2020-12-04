@@ -18,11 +18,11 @@ const Home = ({ courses, folders }) => {
         items={[
           {
             name: 'Study',
-            href: '#',
+            href: '/#',
           },
           {
             name: 'Undergraduate study',
-            href: '#',
+            href: '/#',
           },
           {
             name: 'Course directory',
