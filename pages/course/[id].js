@@ -8,10 +8,10 @@ import { get } from '../../lib/api';
 import { getParentFolderId, getStructuredFolders } from '../../lib/folders';
 import { mapCourseContentToEnv } from '../../lib/mapCourseContentToEnv';
 
-const Page = ({ data, content, folders, parentFolder }) => {
+const Page = ({ item, content, folders, parentFolder }) => {
   return (
     <Layout headerShadow={!Boolean(content.heroImageUrl)}>
-      <NextSeo title={data.name} />
+      <NextSeo title={item.name} />
       {content.heroImageUrl && <HeroImage url={content.heroImageUrl} />}
       <Breadcrumbs
         items={[
@@ -28,8 +28,8 @@ const Page = ({ data, content, folders, parentFolder }) => {
             href: '/',
           },
           {
-            name: data.name,
-            href: `/course/${data.id}`,
+            name: item.name,
+            href: `/course/${item.id}`,
           },
         ]}
       />
@@ -39,7 +39,7 @@ const Page = ({ data, content, folders, parentFolder }) => {
           <QuickNavigation folders={folders} currentFolder={parentFolder} />
         </div>
         <div className="col-span-9 xl:col-start-4 xl:pl-2 2xl:pl-8">
-          <h1 className="text-6xl mb-4 font-medium">{data.name}</h1>
+          <h1 className="text-6xl mb-4 font-medium">{item.name}</h1>
           <CourseContent content={content} />
         </div>
       </div>
@@ -51,19 +51,19 @@ export default Page;
 
 export async function getStaticProps({ params }) {
   const projectId = process.env.GATHERCONTENT_PROJECT_ID;
-  const data = await get(`/items/${params.id}`);
-  const structure = await get(`/structures/${data.structure_uuid}`);
+  const item = await get(`/items/${params.id}`);
+  const structure = await get(`/structures/${item.structure_uuid}`);
   const rawFolders = await get(`/projects/${projectId}/folders`);
   const folders = getStructuredFolders(rawFolders);
   const parentFolder = getParentFolderId({
     folders: rawFolders,
-    folderId: data.folder_uuid,
+    folderId: item.folder_uuid,
   });
 
-  const content = mapCourseContentToEnv(data.content);
+  const content = mapCourseContentToEnv(item.content);
 
   return {
-    props: { data, content, structure, folders, parentFolder },
+    props: { item, content, structure, folders, parentFolder },
   };
 }
 
