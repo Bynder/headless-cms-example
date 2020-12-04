@@ -35,7 +35,7 @@ const fieldLabelLookup = [
 
 if (!argv.apiKey || !argv.email || !argv.projectId) {
   console.log('ERROR: Missing Data');
-  console.log('You should supply an email, api key and project id.');
+  console.log('You must supply an email, api key and project id.');
   return;
 }
 
