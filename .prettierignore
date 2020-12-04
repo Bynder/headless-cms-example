@@ -1,0 +1,10 @@
+# Ignore artifacts:
+build
+coverage
+
+.idea
+.env
+node_modules
+.next
+.DS_Store
+out
