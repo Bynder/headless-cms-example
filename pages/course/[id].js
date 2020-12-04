@@ -5,10 +5,10 @@ import HeroImage from '../../components/HeroImage';
 import Layout from '../../components/Layout';
 import QuickNavigation from '../../components/QuickNavigation';
 import { get } from '../../lib/api';
-import { getParentFolderId, getStructuredFolders } from '../../lib/folders';
+import { getStructuredFolders } from '../../lib/folders';
 import { mapCourseContentToEnv } from '../../lib/mapCourseContentToEnv';
 
-const Page = ({ item, content, folders, parentFolder }) => {
+const Page = ({ item, content, folders }) => {
   return (
     <Layout headerShadow={!Boolean(content.heroImageUrl)}>
       <NextSeo title={item.name} />
@@ -36,7 +36,7 @@ const Page = ({ item, content, folders, parentFolder }) => {
 
       <div className="container px-4 xl:px-20 2xl:px-40 mx-auto lg:grid lg:grid-cols-12 gap-16 py-8">
         <div className="col-span-3 hidden lg:block">
-          <QuickNavigation folders={folders} currentFolder={parentFolder} />
+          <QuickNavigation folders={folders} currentFolder={item.folder_uuid} />
         </div>
         <div className="col-span-9 xl:col-start-4 xl:pl-2 2xl:pl-8">
           <h1 className="text-6xl mb-4 font-medium">{item.name}</h1>
@@ -54,15 +54,11 @@ export async function getStaticProps({ params }) {
   const item = await get(`/items/${params.id}`);
   const rawFolders = await get(`/projects/${projectId}/folders`);
   const folders = getStructuredFolders(rawFolders);
-  const parentFolder = getParentFolderId({
-    folders: rawFolders,
-    folderId: item.folder_uuid,
-  });
 
   const content = mapCourseContentToEnv(item.content);
 
   return {
-    props: { item, content, folders, parentFolder },
+    props: { item, content, folders },
   };
 }
 
