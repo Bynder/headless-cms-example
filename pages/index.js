@@ -109,25 +109,23 @@ export default Home;
 
 export async function getStaticProps() {
   const projectId = process.env.GATHERCONTENT_PROJECT_ID;
-  const items = await get(`/projects/${projectId}/items`);
-  const rawFolders = await get(`/projects/${projectId}/folders`);
-  const folders = getStructuredFolders(rawFolders);
 
-  let courses = [];
+  const mapItemToCourse = ({ name, id, folder_uuid, content }) => ({
+    name,
+    id,
+    folder_uuid,
+    ...mapCourseContentToEnv(content),
+  });
 
-  for await (let course of items) {
-    const courseData = await get(`/items/${course.id}`);
+  const fetchItemsAsCourses = (items) =>
+    Promise.all(
+      items.map(({ id }) => get(`/items/${id}`).then(mapItemToCourse))
+    );
 
-    courses = [
-      ...courses,
-      {
-        name: courseData.name,
-        id: courseData.id,
-        folder_uuid: courseData.folder_uuid,
-        ...mapCourseContentToEnv(courseData.content),
-      },
-    ];
-  }
+  const [folders, courses] = await Promise.all([
+    get(`/projects/${projectId}/folders`).then(getStructuredFolders),
+    get(`/projects/${projectId}/items`).then(fetchItemsAsCourses),
+  ]);
 
   return {
     props: { courses, folders },
