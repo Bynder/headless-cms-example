@@ -17,16 +17,16 @@ const QuickNavigation = ({ folders, currentFolder }) => (
       .filter((folder) =>
         currentFolder ? folder.uuid === currentFolder : true
       )
-      .map((item) => (
-        <ul key={item.uuid} className="mb-2">
+      .map((folder) => (
+        <ul key={folder.uuid} className="mb-2">
           <p className="font-medium">
-            <Link href={`/#${item.uuid}`}>
+            <Link href={`/#${folder.uuid}`}>
               <a className="transition-colors hover:text-accent-1">
-                {item.name}
+                {folder.name}
               </a>
             </Link>
           </p>
-          {item?.children?.map((child) => (
+          {folder?.children?.map((child) => (
             <li key={child.uuid}>
               <Link href={`/#${child.uuid}`}>
                 <a className="transition-colors hover:text-accent-1">
