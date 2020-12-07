@@ -1,3 +1,4 @@
+import cache from 'memory-cache';
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import Breadcrumbs from '../components/Breadcrumbs';
@@ -110,24 +111,30 @@ export default Home;
 export async function getStaticProps() {
   const projectId = process.env.GATHERCONTENT_PROJECT_ID;
 
-  const mapItemToCourse = ({ name, id, folder_uuid, content }) => ({
-    name,
-    id,
-    folder_uuid,
-    ...mapCourseContentToEnv(content),
-  });
+  const getCachedData = () => cache.get('index');
 
-  const fetchItemsAsCourses = (items) =>
-    Promise.all(
-      items.map(({ id }) => get(`/items/${id}`).then(mapItemToCourse))
-    );
+  if (!getCachedData()) {
+    const mapItemToCourse = ({ name, id, folder_uuid, content }) => ({
+      name,
+      id,
+      folder_uuid,
+      ...mapCourseContentToEnv(content),
+    });
 
-  const [folders, courses] = await Promise.all([
-    get(`/projects/${projectId}/folders`).then(getStructuredFolders),
-    get(`/projects/${projectId}/items`).then(fetchItemsAsCourses),
-  ]);
+    const fetchItemsAsCourses = (items) =>
+      Promise.all(
+        items.map(({ id }) => get(`/items/${id}`).then(mapItemToCourse))
+      );
+
+    const [folders, courses] = await Promise.all([
+      get(`/projects/${projectId}/folders`).then(getStructuredFolders),
+      get(`/projects/${projectId}/items`).then(fetchItemsAsCourses),
+    ]);
+
+    cache.put('index', { courses, folders });
+  }
 
   return {
-    props: { courses, folders },
+    props: getCachedData(),
   };
 }
