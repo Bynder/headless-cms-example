@@ -4,11 +4,13 @@ This repository is set-up to work with a GatherContent example project, publishi
 
 ## Prerequisites
 
-- A [GatherContent](https://gathercontent.com/) account
+- A [GatherContent](https://gathercontent.com/) account.
 
-- An API Key (follow these [instructions](https://docs.gathercontent.com/reference#authentication) to find your API key)
+- An example project called "Course records (headless CMS example)". If you don't have this, [contact us](https://gathercontent.com), and we'll add it to your account.
 
-- The project id for the example project named "Course records (headless CMS example)". Every account should have this project, and you can find the id in the project settings.
+- An API Key (follow these [instructions](https://docs.gathercontent.com/reference#authentication) to find your API key).
+
+- The project id for the example project. Every account should have this project, and you can find the id in the project settings.
 
 ## Deploying
 
@@ -84,3 +86,11 @@ yarn dev
 ```
 
 Be sure to navigate to `http://localhost:3000` to see your example project locally.
+
+## Local caching
+
+To help speed up local development we've implemented `memory-cache` to store data locally instead of fetching for every route change.
+
+This heavily speeds up navigation. To break the cache and fetch the most recent content from the API, you can re-run `yarn dev` and refresh the page.
+
+You may experience slower speeds on the first visit to a page, but any visits after that will be a lot faster.
