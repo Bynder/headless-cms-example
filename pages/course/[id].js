@@ -7,6 +7,7 @@ import QuickNavigation from '../../components/QuickNavigation';
 import { get } from '../../lib/api';
 import { getStructuredFolders } from '../../lib/folders';
 import { mapCourseContentToEnv } from '../../lib/mapCourseContentToEnv';
+import cache from 'memory-cache';
 
 const Page = ({ item, content, folders }) => {
   return (
@@ -51,24 +52,39 @@ export default Page;
 
 export async function getStaticProps({ params }) {
   const projectId = process.env.GATHERCONTENT_PROJECT_ID;
-  const [item, folders] = await Promise.all([
-    get(`/items/${params.id}`),
-    get(`/projects/${projectId}/folders`).then(getStructuredFolders),
-  ]);
 
-  const content = mapCourseContentToEnv(item.content);
+  const cachedData = () => cache.get(`course-${params.id}`);
+
+  if (!cachedData()) {
+    const [item, folders] = await Promise.all([
+      get(`/items/${params.id}`),
+      get(`/projects/${projectId}/folders`).then(getStructuredFolders),
+    ]);
+
+    const content = mapCourseContentToEnv(item.content);
+    cache.put(`course-${params.id}`, { item, content, folders });
+  }
 
   return {
-    props: { item, content, folders },
+    props: cachedData(),
   };
 }
 
 export async function getStaticPaths() {
   const projectId = process.env.GATHERCONTENT_PROJECT_ID;
-  const items = await get(`/projects/${projectId}/items`);
+
+  const cachedData = () => cache.get('itemPaths');
+
+  if (!cachedData()) {
+    const items = await get(`/projects/${projectId}/items`);
+    const mappedPaths = items.map((item) => ({
+      params: { id: String(item.id) },
+    }));
+    cache.put('itemPaths', mappedPaths);
+  }
 
   return {
-    paths: items.map((item) => ({ params: { id: String(item.id) } })),
+    paths: cachedData(),
     fallback: false,
   };
 }
