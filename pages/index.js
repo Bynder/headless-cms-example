@@ -69,6 +69,7 @@ const Home = ({ courses, folders }) => {
                     <ul className="mb-8">
                       {courses
                         .filter((course) => course.folder_uuid === child.uuid)
+                        .filter((course) => !!course.hours)
                         .map((course) => (
                           <li key={course.id} className="">
                             <Link href={`/course/${course.id}`}>
